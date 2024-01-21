@@ -18,10 +18,11 @@
     width: 100%;
   }
   
-  h2 {
+  h2, h3 {
     font-size: 1.5rem;
     color: #93B1A6;
   }
+
   
   h3 {
     font-size: 3rem;
@@ -29,38 +30,71 @@
   }
   
   .card-grid {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    grid-auto-rows: auto;
+
+    grid-gap: 1rem;
   }
   
   .card {
     width: 190px;
     height: 254px;
-    border-radius: 30px;
-    background: #212121;
-    box-shadow: 15px 15px 30px rgb(25, 25, 25),
-                -15px -15px 30px rgb(60, 60, 60);
+    margin: 0 auto;
+    background-color: #011522;
+    border-radius: 4px;
+    border: 2px;
+    padding: .5rem;
+    z-index: 1;
    }
-  
-  .card p {
-    background-color: white;
-    flex: 1;
-    font-size: 1.5rem;
-    margin-top: 5px;
-    padding: 5px 20px 0px 20px;
-    text-align: center;
-  }
+   
+   .tools {
+    display: flex;
+    align-items: center;
+    padding: 9px;
+   }
+   
+   .circle {
+    padding: 0 4px;
+   }
+   
+   .box {
+    display: inline-block;
+    align-items: center;
+    width: 10px;
+    height: 10px;
+    padding: 1px;
+    border-radius: 50%;
+   }
+   
+   .red {
+    background-color: #ff605c;
+   }
+   
+   .yellow {
+    background-color: #ffbd44;
+   }
+   
+   .green {
+    background-color: #00ca4e;
+   }
+   
+
   
   .card img {
     width: 100%;
+  }
+
+  .card p {
+    color: #93B1A6
   }
   
 
 
   button {
-    /* Variables */
+    
     --button_radius: 0.75em;
     --button_color: #e8e8e8;
     --button_outline_color: #000000;
@@ -84,12 +118,12 @@
   }
   
   button:hover .button_top {
-    /* Pull the button upwards when hovered */
+    
     transform: translateY(-0.33em);
   }
   
   button:active .button_top {
-    /* Push the button downwards when pressed */
+    
     transform: translateY(0);
   }
   
@@ -97,7 +131,7 @@
   .container {
     width: 100%;
     height: 100%;
-    --s: 200px; /* control the size */
+    --s: 200px; 
     --c1: #1d1d1d;
     --c2: #4e4f51;
     --c3: #3c3c3c;

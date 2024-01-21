@@ -1,27 +1,29 @@
 import { useState } from "react";
 import AddCategory from "./components/AddCategory";
+import GifGrid from "./components/GifGrid";
 
 export default function GiftExpertApp() {
   const [categories, setCategories] = useState([
-    "Sousou no Frieren",
-    "Jujutsu Kaisen",
+    "The Witcher",
   ]);
 
-  const handleAdd = ( newValue : string ) => {
-    const isAlreadyIn = categories.find((e) => e.toLowerCase() === newValue.toLowerCase());
+  const handleAdd = (newValue: string) => {
+    const isAlreadyIn = categories.find(
+      (e) => e.toLowerCase() === newValue.toLowerCase()
+    );
     if (isAlreadyIn) return;
-    setCategories([...categories, newValue]);
+    setCategories([newValue, ...categories]);
   };
 
   return (
     <>
       <h2>GiftExpertApp</h2>
-      <AddCategory onNewValue={ handleAdd } />
-      <ol>
-        {categories.map((e) => {
-          return <li key={ e } >{ e }</li>;
-        })}
-      </ol>
+      <AddCategory onNewValue={handleAdd} />
+
+      {categories.map((category: string) => (
+      
+        <GifGrid key={category} category={category} />
+      ))}
     </>
   );
 }
