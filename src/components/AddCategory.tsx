@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 export default function AddCategory({
-  handleCategories,
+  onNewValue,
 }: {
-  handleCategories: string[];
+  onNewValue: (newValue: string) => void;
 }) {
   const [inputValue, setinputValue] = useState("");
   const handleInputChange = ({ target }: { target: { value: string } }) => {
@@ -11,11 +11,13 @@ export default function AddCategory({
     setinputValue(target.value);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (inputValue.trim().length <= 1) return;
-    handleCategories((category) => [...category, inputValue]);
-    setinputValue('');
+    const newInputValue = inputValue.trim();
+    if (newInputValue.length <= 1) return;
+    
+    onNewValue(newInputValue);
+    setinputValue("");
   };
 
   return (
